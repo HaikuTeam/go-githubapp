@@ -28,6 +28,8 @@ type Config struct {
 		IntegrationID int    `yaml:"integration_id" json:"integrationId"`
 		WebhookSecret string `yaml:"webhook_secret" json:"webhookSecret"`
 		PrivateKey    string `yaml:"private_key" json:"privateKey"`
+		AppName       string `yaml:"private_key" json:"privateKey"`
+		AppVersion    string `yaml:"private_key" json:"privateKey"`
 	} `yaml:"app" json:"app"`
 
 	OAuth struct {
@@ -47,6 +49,8 @@ func (c *Config) SetValuesFromEnv(prefix string) {
 	setIntFromEnv("GITHUB_APP_INTEGRATION_ID", prefix, &c.App.IntegrationID)
 	setStringFromEnv("GITHUB_APP_WEBHOOK_SECRET", prefix, &c.App.WebhookSecret)
 	setStringFromEnv("GITHUB_APP_PRIVATE_KEY", prefix, &c.App.PrivateKey)
+	setStringFromEnv("GITHUB_APP_NAME", prefix, &c.App.AppName)
+	setStringFromEnv("GITHUB_APP_VERSION", prefix, &c.App.AppVersion)
 
 	setStringFromEnv("GITHUB_OAUTH_CLIENT_ID", prefix, &c.OAuth.ClientID)
 	setStringFromEnv("GITHUB_OAUTH_CLIENT_SECRET", prefix, &c.OAuth.ClientSecret)
